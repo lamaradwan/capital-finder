@@ -9,14 +9,16 @@ class handler(BaseHTTPRequestHandler):
         print(url_components)
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
+        print(dic)
         definitions = []
         if 'word' in dic:
             word = dic['word']
-            url = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
+            url = 'https://restcountries.com/v3.1/capital/'
             r = requests.get(url + word)
             data = r.json()
+            print(data)
             for word_data in data:
-                definition = word_data['meanings'][0]['definitions'][0]['definition']
+                definition = f"{word} is the capital of {word_data['name']['common']}"
                 definitions.append(definition)
 
             message = str(definitions)
