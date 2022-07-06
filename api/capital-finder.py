@@ -10,20 +10,28 @@ class handler(BaseHTTPRequestHandler):
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
         print(dic)
-        definitions = []
-        if 'word' in dic:
-            word = dic['word']
+        result = []
+        if 'country' in dic:
+            country = dic['country']
             url = 'https://restcountries.com/v3.1/name/'
-            r = requests.get(url + word)
+            r = requests.get(url + country)
             data = r.json()
             print(data)
             for word_data in data:
+                capital = f"The capital of {country} is {word_data['capital'][0]}"
+                result.append(capital)
 
-                definition = f"The capital of {word} is {word_data['capital'][0]}"
-                definitions.append(definition)
-
-            message = str(definitions)
-
+            message = str(result)
+        elif 'capital' in dic:
+            capital = dic['capital']
+            url ='https://restcountries.com/v3.1/capital/'
+            r = requests.get(url+capital)
+            data = r.json()
+            print(data)
+            for capi in data:
+                country = f"{capital} is the capital of {capi['name']['common']}"
+                result.append(country)
+            message = str(result)
         else:
             message = "Please provide me with a word"
 
