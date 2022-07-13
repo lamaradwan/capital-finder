@@ -1,11 +1,10 @@
 # capital-finder
 
 
-Live URL: https://capital-finder-ctas0ppeq-lamaradwan.vercel.app
-
+Live URL: https://capital-finder-two.vercel.app/
 
 - To check the capital:
-https://capital-finder-ctas0ppeq-lamaradwan.vercel.app/capital?word=amman
+https://capital-finder-fmcwnn8lm-lamaradwan.vercel.app/api/capital-finder?capital=amman
 
-- To check the city:
-https://capital-finder-ctas0ppeq-lamaradwan.vercel.app/country?word=jordan
+- To check the country:
+https://capital-finder-fmcwnn8lm-lamaradwan.vercel.app/api/capital-finder?country=egypt
